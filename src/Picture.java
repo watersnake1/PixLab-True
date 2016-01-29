@@ -167,6 +167,44 @@ public class Picture extends SimplePicture
       }
     } 
   }
+
+  /**
+   * Method to mirror the image along a vertical axis from left to right
+   */
+  public void mirrorVerticalRightToLeft()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int width = pixels[0].length;
+    for (int row = 0; row < pixels.length; row++)
+    {
+      for (int col = pixels[0].length-1; col > width / 2; col--)
+      {
+        leftPixel = pixels[row][col];
+        rightPixel = pixels[row][width - 1 - col];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    }
+  }
+
+  public void mirrorHorizontal()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int width = pixels[0].length;
+    for (int row = 0; row < pixels.length; row++)
+    {
+      for (int col = pixels[0].length-1; col > width / 2; col--)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[row][width - 1 - col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    }
+
+  }
   
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
@@ -263,6 +301,24 @@ public class Picture extends SimplePicture
           leftPixel.setColor(Color.BLACK);
         else
           leftPixel.setColor(Color.WHITE);
+      }
+    }
+  }
+
+  /**
+   * removes some of the green from a photo to fix underwater shots
+   */
+  public void fixUnderwater()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (int row = 0; row < pixels.length; row++)
+    {
+      for (int col = 0; col < pixels[0].length; col++)
+      {
+        pixels[row][col].setGreen(pixels[row][col].getGreen()-50);
+        pixels[row][col].setRed(pixels[row][col].getRed() + 75);
+        pixels[row][col].setBlue(pixels[row][col].getBlue() - 25);
+
       }
     }
   }

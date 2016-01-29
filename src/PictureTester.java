@@ -80,6 +80,36 @@ public class PictureTester
     swan.edgeDetection(10);
     swan.explore();
   }
+
+  /**
+   * Method to test the fix underwater method
+   */
+  public static void testFixUnderwater()
+  {
+    Picture water = new Picture("water.jpg");
+    water.explore();
+    water.fixUnderwater();
+    water.explore();
+  }
+
+  /**
+   * Method to test the mirror vertical left to right method
+   */
+  public static void testMirrorVerticalRightToLeft()
+  {
+    Picture beach = new Picture("beach.jpg");
+    beach.explore();
+    beach.mirrorVerticalRightToLeft();
+    beach.explore();
+  }
+
+  public static void testMirrorHorizontal()
+  {
+    Picture beach = new Picture("beach.jpg");
+    beach.explore();
+    beach.mirrorHorizontal();
+    beach.explore();
+  }
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -89,7 +119,7 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     //testZeroBlue();
-    //testKeepOnlyBlue();
+    testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
@@ -112,6 +142,9 @@ public class PictureTester
     //testGetAverageForColumn(0);
     //testKeepOnlyBlue();
     //testNegate();
-    testGrayScale();
+    //testGrayScale();
+    //testFixUnderwater();
+    //testMirrorVerticalRightToLeft();
+    //testMirrorHorizontal();
   }
 }
