@@ -39,7 +39,7 @@ public class PictureTester
     beach.explore();
   }
 
-  public static void testGrayScale()
+  public static void testGrayscale()
   {
     Picture beach = new Picture("images/beach.jpg");
     beach.explore();
@@ -103,12 +103,43 @@ public class PictureTester
     beach.explore();
   }
 
+  /**
+   * Method to test the mirror bottom to top method
+   */
   public static void testMirrorHorizontal()
   {
     Picture beach = new Picture("beach.jpg");
     beach.explore();
     beach.mirrorHorizontal();
     beach.explore();
+  }
+
+  /**
+   * Method to test the horizontal bototm to top method
+   */
+  public static void testMirrorHorizontalBotToTop()
+  {
+    Picture beach = new Picture("beach.jpg");;
+    beach.explore();
+    beach.mirrorHorizontalBotToTop();
+    beach.explore();
+  }
+
+  /**
+   * Method to test the mirror arms method
+   */
+  public static void testMirrorArms()
+  {
+    Picture snowman = new Picture("snowman.jpg");
+    snowman.explore();
+    snowman.mirrorArms();
+    snowman.explore();
+  }
+
+  public static void temple()
+  {
+    Picture pic = new Picture("temple.jpg");
+    pic.explore();
   }
   
   /** Main method for testing.  Every class can have a main
@@ -119,7 +150,7 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     //testZeroBlue();
-    testKeepOnlyBlue();
+    //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
@@ -146,5 +177,8 @@ public class PictureTester
     //testFixUnderwater();
     //testMirrorVerticalRightToLeft();
     //testMirrorHorizontal();
+    //testMirrorHorizontalBotToTop();
+    testMirrorArms();
+    //temple();
   }
 }

@@ -188,6 +188,9 @@ public class Picture extends SimplePicture
     }
   }
 
+  /**
+   * Method to mirror the image along a horizontal axis
+   */
   public void mirrorHorizontal()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -200,6 +203,27 @@ public class Picture extends SimplePicture
       {
         topPixel = pixels[row][col];
         bottomPixel = pixels[row][width - 1 - col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    }
+
+  }
+
+  /**
+   * Method to mirror the image along a horizontal axis bottom to top
+   */
+  public void mirrorHorizontalBotToTop()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int height = pixels.length;
+    for (int row = 0; row < pixels.length; row++)
+    {
+      for (int col = pixels[0].length-1; col > height / 2; col--)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[height-1-row][col];
         bottomPixel.setColor(topPixel.getColor());
       }
     }
@@ -229,7 +253,45 @@ public class Picture extends SimplePicture
       }
     }
   }
-  
+
+  /**
+   * Make the snowman have 4 arms
+   */
+  public void mirrorArms()
+  {
+    int mirrorPoint = 193;
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+
+    for (int row = 158; row < mirrorPoint; row++)
+    {
+
+      for (int col = 103; col < 170; col++)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[mirrorPoint - row + mirrorPoint][col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    }
+
+    int mirrorPoint2 = 198;
+    Pixel topPixel2 = null;
+    Pixel bottomPixel2 = null;
+
+
+    for (int row = 171; row < mirrorPoint2; row++)
+    {
+
+      for (int col = 239; col < 294; col++)
+      {
+        topPixel2 = pixels[row][col];
+        bottomPixel2 = pixels[mirrorPoint2 - row + mirrorPoint2][col];
+        bottomPixel2.setColor(topPixel2.getColor());
+      }
+    }
+  }
+
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
     * current picture
